@@ -39,12 +39,12 @@ class imagenes(models.Model):
 
 class comentarios(models.Model):
     comentario = models.TextField()
-    comentario_id = models.IntegerField(max_length=45)
+    comentario_id = models.IntegerField()
     usuarios_id = models.IntegerField()
 
 
 class descuentos(models.Model):
-    descuento = models.CharField(45)
+    descuento = models.CharField(max_length=45)
     fecha_inicio = models.DateField() ##pendiente definir el formato de fecha
     fecha_final = models.DateField() #pendiente definir el formato de fecha
     porcentaje = models.CharField(max_length=45)
@@ -53,3 +53,18 @@ class descuentos(models.Model):
 
 class descuentos_estado(models.Model):
     dto_estado = models.CharField(max_length=45)
+
+
+class productos(models.Model):
+    nombre_producto = models.CharField(max_length=45)
+    caracteristicas = models.TextField(max_length=450)
+    precio = models.FloatField()
+    cantidad = models.CharField(max_length=45)
+    marcas_id = models.ForeignKey('marcas', on_delete=models.SET_NULL, null=True)
+    proveedores_id = models.ForeignKey('proveedores', on_delete=models.SET_NULL, null=True)
+    categorias_id = models.ForeignKey('categorias', on_delete=models.SET_NULL, null=True)
+    producto_estado_id = models.ForeignKey('producto_estado', on_delete=models.SET_NULL, null=True)
+    imagenes_id = models.ForeignKey('imagenes', on_delete=models.SET_NULL, null=True)
+    tipos_producto_id = models.ForeignKey('tipos_producto', on_delete=models.SET_NULL, null=True)
+    descuentos_id = models.ForeignKey('descuentos', on_delete=models.SET_NULL, null=True)
+    comentarios_id = models.ForeignKey('comentarios', on_delete=models.SET_NULL, null=True)
