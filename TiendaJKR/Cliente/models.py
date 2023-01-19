@@ -36,7 +36,7 @@ class usuarios(models.Model):
 	num_documento = models.IntegerField()
 	correo = models.CharField(max_length=125)
 	contrasena = models.CharField(max_length=16)
-	num_contacto = models.IntegerField(max_length=12)
+	num_contacto = models.IntegerField()
 	edad = models.DateField()
 	direccion = models.CharField(max_length=45)
 	usuario_estado_id = models.ForeignKey('usuario_estado', on_delete=models.SET_NULL, null=True)
